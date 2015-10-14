@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CustomerMVC.Controllers
 {
+    // I am the bone of my code
     public class HomeController : Controller
     {
         public ActionResult Index()
