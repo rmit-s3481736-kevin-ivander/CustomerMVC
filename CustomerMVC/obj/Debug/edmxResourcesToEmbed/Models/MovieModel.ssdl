@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cineplex">
+    <Key>
+      <PropertyRef Name="CineplexID" />
+    </Key>
+    <Property Name="CineplexID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LongDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CineplexMovie">
+    <Key>
+      <PropertyRef Name="CineplexID" />
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="CineplexID" Type="int" Nullable="false" />
+    <Property Name="MovieID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Enquiry">
+    <Key>
+      <PropertyRef Name="EnquiryID" />
+    </Key>
+    <Property Name="EnquiryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovieComingSoon">
+    <Key>
+      <PropertyRef Name="MovieComingSoonID" />
+    </Key>
+    <Property Name="MovieComingSoonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LongDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="Movie_ID" />
+    </Key>
+    <Property Name="Movie_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Movie_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Short_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Long_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Poster" Type="nvarchar(max)" />
+    <Property Name="Duration" Type="money" Nullable="false" />
+    <Property Name="Rating" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="FK__CineplexM__Cinep__182C9B23">
+    <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="1" />
+    <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cineplex">
+        <PropertyRef Name="CineplexID" />
+      </Principal>
+      <Dependent Role="CineplexMovie">
+        <PropertyRef Name="CineplexID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CineplexM__Movie__1920BF5C">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
+    <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="Movie_ID" />
+      </Principal>
+      <Dependent Role="CineplexMovie">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Assignment2DataModelStoreContainer">
+    <EntitySet Name="Cineplex" EntityType="Self.Cineplex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CineplexMovie" EntityType="Self.CineplexMovie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieComingSoon" EntityType="Self.MovieComingSoon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CineplexM__Cinep__182C9B23" Association="Self.FK__CineplexM__Cinep__182C9B23">
+      <End Role="Cineplex" EntitySet="Cineplex" />
+      <End Role="CineplexMovie" EntitySet="CineplexMovie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CineplexM__Movie__1920BF5C" Association="Self.FK__CineplexM__Movie__1920BF5C">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="CineplexMovie" EntitySet="CineplexMovie" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

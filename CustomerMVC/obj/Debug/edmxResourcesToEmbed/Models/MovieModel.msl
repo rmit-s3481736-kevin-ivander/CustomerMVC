@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Assignment2DataModelStoreContainer" CdmEntityContainer="Assignment2Entities">
+    <EntitySetMapping Name="Cineplexes">
+      <EntityTypeMapping TypeName="Assignment2DataModel.Cineplex">
+        <MappingFragment StoreEntitySet="Cineplex">
+          <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enquiries">
+      <EntityTypeMapping TypeName="Assignment2DataModel.Enquiry">
+        <MappingFragment StoreEntitySet="Enquiry">
+          <ScalarProperty Name="EnquiryID" ColumnName="EnquiryID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovieComingSoons">
+      <EntityTypeMapping TypeName="Assignment2DataModel.MovieComingSoon">
+        <MappingFragment StoreEntitySet="MovieComingSoon">
+          <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movies1">
+      <EntityTypeMapping TypeName="Assignment2DataModel.Movies">
+        <MappingFragment StoreEntitySet="Movies">
+          <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
+          <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
+          <ScalarProperty Name="Short_Description" ColumnName="Short_Description" />
+          <ScalarProperty Name="Long_Description" ColumnName="Long_Description" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CineplexMovie" TypeName="Assignment2DataModel.CineplexMovie" StoreEntitySet="CineplexMovie">
+      <EndProperty Name="Cineplex">
+        <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
+      </EndProperty>
+      <EndProperty Name="Movies">
+        <ScalarProperty Name="Movie_ID" ColumnName="MovieID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

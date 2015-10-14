@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Assignment2DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cineplex">
+    <Key>
+      <PropertyRef Name="CineplexID" />
+    </Key>
+    <Property Name="CineplexID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Movies" Relationship="Self.CineplexMovie" FromRole="Cineplex" ToRole="Movies" />
+  </EntityType>
+  <EntityType Name="Enquiry">
+    <Key>
+      <PropertyRef Name="EnquiryID" />
+    </Key>
+    <Property Name="EnquiryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovieComingSoon">
+    <Key>
+      <PropertyRef Name="MovieComingSoonID" />
+    </Key>
+    <Property Name="MovieComingSoonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="Movie_ID" />
+    </Key>
+    <Property Name="Movie_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Movie_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Short_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Long_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Poster" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Duration" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Cineplexes" Relationship="Self.CineplexMovie" FromRole="Movies" ToRole="Cineplex" />
+  </EntityType>
+  <Association Name="CineplexMovie">
+    <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="*" />
+    <End Role="Movies" Type="Assignment2DataModel.Movies" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Assignment2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cineplexes" EntityType="Self.Cineplex" />
+    <EntitySet Name="Enquiries" EntityType="Self.Enquiry" />
+    <EntitySet Name="MovieComingSoons" EntityType="Self.MovieComingSoon" />
+    <EntitySet Name="Movies1" EntityType="Assignment2DataModel.Movies" />
+    <AssociationSet Name="CineplexMovie" Association="Self.CineplexMovie">
+      <End Role="Cineplex" EntitySet="Cineplexes" />
+      <End Role="Movies" EntitySet="Movies1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
