@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Now Showing</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -21,16 +21,7 @@
             Short Description
         </th>
         <th>
-            Long Description
-        </th>
-        <th>
             Duration
-        </th>
-        <th>
-            Rating
-        </th>
-        <th>
-            Price
         </th>
         <th></th>
     </tr>
@@ -38,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:300px;height:200px;">
+            <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;">
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Movie_Title)
@@ -47,16 +38,7 @@
             @Html.DisplayFor(modelItem => item.Short_Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Long_Description)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Movie_ID }) |

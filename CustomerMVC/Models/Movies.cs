@@ -25,7 +25,7 @@ namespace CustomerMVC.Models
         public string Short_Description { get; set; }
         public string Long_Description { get; set; }
         public string Poster { get; set; }
-        public decimal Duration { get; set; }
+        public Nullable<int> Duration { get; set; }
         public string Rating { get; set; }
         public Nullable<decimal> Price { get; set; }
     

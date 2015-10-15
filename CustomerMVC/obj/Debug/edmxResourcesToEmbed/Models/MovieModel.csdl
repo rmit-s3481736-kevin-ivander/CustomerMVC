@@ -38,7 +38,7 @@
     <Property Name="Short_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Long_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Poster" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Duration" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Duration" Type="Int32" />
     <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="Cineplexes" Relationship="Self.CineplexMovie" FromRole="Movies" ToRole="Cineplex" />

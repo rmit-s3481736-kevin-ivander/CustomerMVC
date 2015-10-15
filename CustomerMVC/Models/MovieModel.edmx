@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cineplex">
           <Key>
             <PropertyRef Name="CineplexID" />
@@ -50,7 +50,7 @@
           <Property Name="Short_Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Long_Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Poster" Type="nvarchar(max)" />
-          <Property Name="Duration" Type="money" Nullable="false" />
+          <Property Name="Duration" Type="int" />
           <Property Name="Rating" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
@@ -93,8 +93,7 @@
             <End Role="CineplexMovie" EntitySet="CineplexMovie" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Assignment2DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -136,7 +135,7 @@
           <Property Name="Short_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Long_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Poster" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Duration" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Duration" Type="Int32" />
           <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Cineplexes" Relationship="Self.CineplexMovie" FromRole="Movies" ToRole="Cineplex" />

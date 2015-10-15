@@ -50,6 +50,5 @@
 \\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.Owin.Security.Google.xml
 \\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.Owin.Security.Twitter.xml
 \\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-\\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.csprojResolveAssemblyReference.cache
 \\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.dll
 \\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.pdb
