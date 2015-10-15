@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<CustomerMVC.Models.Cineplex>
+
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Cineplex";
+    ViewBag.Title = "Index";
 }
+
 <h2>Cineplex</h2>
 <table class="table">
     <tr>
@@ -18,13 +19,12 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Location);
+                @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="1" style="width:200px;height:200px;">
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="1" style="width:250px;height:210px;">
             </td>
         </tr>
     }
 
 </table>
-
