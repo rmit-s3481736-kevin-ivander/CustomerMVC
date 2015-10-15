@@ -26,7 +26,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;">
+            <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Movie_Title)
@@ -37,9 +37,7 @@
             @Html.DisplayFor(modelItem => item.Short_Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Movie_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Movie_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Movie_ID })
+            @Html.ActionLink("Make Booking", "Details", new { id=item.Movie_ID })
         </td>
     </tr>
 }

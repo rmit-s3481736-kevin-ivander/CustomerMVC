@@ -11,59 +11,46 @@
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Movie_Title)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.Poster)" alt="1" style="width:170px;height:230px;" />
+        </dd>
+        <dt>
+            Movie Title: 
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Movie_Title)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Short_Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Short_Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Long_Description)
+            Long Description: 
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Long_Description)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Poster)
+            Duration: 
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Poster)
+            @Html.DisplayFor(model => model.Duration) mins
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Duration)
+            Rating: 
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Rating)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Price)
+           Unit Price: 
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            $@Html.DisplayFor(model => model.Price)
         </dd>
 
     </dl>
