@@ -11,8 +11,6 @@
         <EntityTypeShape EntityType="Assignment2DataModel.Movies" Width="1.5" PointX="3.625" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="Assignment2DataModel.CineplexMovie" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Assignment2DataModel.Booking" Width="1.5" PointX="6" PointY="3.625" />
-        <AssociationConnector Association="Assignment2DataModel.CineplexMovie1" />
-        <EntityTypeShape EntityType="Assignment2DataModel.Session" Width="1.5" PointX="7.75" PointY="5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
