@@ -41,8 +41,27 @@
         <dd>
             <img src="@Html.DisplayFor(model => model.ImageUrl)" alt="@Html.DisplayFor(model => model.Location)" style="width:250px;height:210px;">
         </dd>
-
     </dl>
+    <h4>Now Showing</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                Images
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Short Description
+            </th>
+            <th></th>
+        </tr>
+
+       
+
+    </table>
+    <hr />
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CineplexID }) |

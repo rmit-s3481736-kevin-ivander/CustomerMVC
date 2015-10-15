@@ -10,6 +10,7 @@
     <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Movies" Relationship="Self.CineplexMovie" FromRole="Cineplex" ToRole="Movies" />
+    <NavigationProperty Name="Movies1" Relationship="Assignment2DataModel.CineplexMovie1" FromRole="Cineplex" ToRole="Movies" />
   </EntityType>
   <EntityType Name="Enquiry">
     <Key>
@@ -42,6 +43,7 @@
     <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="Cineplexes" Relationship="Self.CineplexMovie" FromRole="Movies" ToRole="Cineplex" />
+    <NavigationProperty Name="Cineplexes1" Relationship="Assignment2DataModel.CineplexMovie1" FromRole="Movies" ToRole="Cineplex" />
   </EntityType>
   <Association Name="CineplexMovie">
     <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="*" />
@@ -57,6 +59,11 @@
       <End Role="Movies" EntitySet="Movies1" />
     </AssociationSet>
     <EntitySet Name="Bookings" EntityType="Assignment2DataModel.Booking" />
+    <AssociationSet Name="CineplexMovie1" Association="Assignment2DataModel.CineplexMovie1">
+      <End Role="Cineplex" EntitySet="Cineplexes" />
+      <End Role="Movies" EntitySet="Movies1" />
+    </AssociationSet>
+    <EntitySet Name="Sessions" EntityType="Assignment2DataModel.Session" />
   </EntityContainer>
   <EntityType Name="Booking">
     <Key>
@@ -74,5 +81,21 @@
     <Property Name="Session_Time" Type="DateTime" Nullable="false" Precision="7" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Poster" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="CineplexMovie1">
+    <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
+    <End Type="Assignment2DataModel.Movies" Role="Movies" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="Session_ID" />
+    </Key>
+    <Property Name="Session_ID" Type="Int32" Nullable="false" />
+    <Property Name="Movie_ID" Type="Int32" Nullable="false" />
+    <Property Name="Movie_Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CineplexID" Type="Int32" Nullable="false" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Session_Time" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Session_Day" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
 </Schema>

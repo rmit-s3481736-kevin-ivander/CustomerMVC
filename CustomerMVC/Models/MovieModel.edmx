@@ -5,16 +5,9 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="Booking_ID" />
-            <PropertyRef Name="Movie_ID" />
-            <PropertyRef Name="Movie_Title" />
-            <PropertyRef Name="Movie_Time" />
-            <PropertyRef Name="Session_Time" />
-            <PropertyRef Name="Poster" />
           </Key>
           <Property Name="Booking_ID" Type="int" Nullable="false" />
           <Property Name="Movie_ID" Type="int" Nullable="false" />
@@ -37,10 +30,10 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
         <EntityType Name="CineplexMovie">
           <Key>
             <PropertyRef Name="CineplexID" />
-            <PropertyRef Name="MovieID" />
+            <PropertyRef Name="Movie_ID" />
           </Key>
           <Property Name="CineplexID" Type="int" Nullable="false" />
-          <Property Name="MovieID" Type="int" Nullable="false" />
+          <Property Name="Movie_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Enquiry">
           <Key>
@@ -73,7 +66,19 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
           <Property Name="Rating" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <Association Name="FK__CineplexM__Cinep__182C9B23">
+        <EntityType Name="Sessions">
+          <Key>
+            <PropertyRef Name="Session_ID" />
+          </Key>
+          <Property Name="Session_ID" Type="int" Nullable="false" />
+          <Property Name="Movie_ID" Type="int" Nullable="false" />
+          <Property Name="Movie_Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CineplexID" Type="int" Nullable="false" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Session_Time" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Session_Day" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CineplexM__Cinep__38996AB5">
           <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="1" />
           <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
           <ReferentialConstraint>
@@ -85,7 +90,7 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CineplexM__Movie__1920BF5C">
+        <Association Name="FK__CineplexM__Movie__398D8EEE">
           <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
           <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
           <ReferentialConstraint>
@@ -93,32 +98,23 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
               <PropertyRef Name="Movie_ID" />
             </Principal>
             <Dependent Role="CineplexMovie">
-              <PropertyRef Name="MovieID" />
+              <PropertyRef Name="Movie_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Assignment2DataModelStoreContainer">
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cineplex" EntityType="Self.Cineplex" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CineplexMovie" EntityType="Self.CineplexMovie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieComingSoon" EntityType="Self.MovieComingSoon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Booking" EntityType="Self.Booking" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Booking].[Booking_ID] AS [Booking_ID], 
-    [Booking].[Movie_ID] AS [Movie_ID], 
-    [Booking].[Movie_Title] AS [Movie_Title], 
-    [Booking].[Movie_Time] AS [Movie_Time], 
-    [Booking].[Session_Time] AS [Session_Time], 
-    [Booking].[Price] AS [Price], 
-    [Booking].[Poster] AS [Poster]
-    FROM [dbo].[Booking] AS [Booking]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__CineplexM__Cinep__182C9B23" Association="Self.FK__CineplexM__Cinep__182C9B23">
+          <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CineplexM__Cinep__38996AB5" Association="Self.FK__CineplexM__Cinep__38996AB5">
             <End Role="Cineplex" EntitySet="Cineplex" />
             <End Role="CineplexMovie" EntitySet="CineplexMovie" />
           </AssociationSet>
-          <AssociationSet Name="FK__CineplexM__Movie__1920BF5C" Association="Self.FK__CineplexM__Movie__1920BF5C">
+          <AssociationSet Name="FK__CineplexM__Movie__398D8EEE" Association="Self.FK__CineplexM__Movie__398D8EEE">
             <End Role="Movies" EntitySet="Movies" />
             <End Role="CineplexMovie" EntitySet="CineplexMovie" />
           </AssociationSet>
@@ -137,6 +133,7 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
           <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Movies" Relationship="Self.CineplexMovie" FromRole="Cineplex" ToRole="Movies" />
+          <NavigationProperty Name="Movies1" Relationship="Assignment2DataModel.CineplexMovie1" FromRole="Cineplex" ToRole="Movies" />
         </EntityType>
         <EntityType Name="Enquiry">
           <Key>
@@ -169,6 +166,7 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
           <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Cineplexes" Relationship="Self.CineplexMovie" FromRole="Movies" ToRole="Cineplex" />
+          <NavigationProperty Name="Cineplexes1" Relationship="Assignment2DataModel.CineplexMovie1" FromRole="Movies" ToRole="Cineplex" />
         </EntityType>
         <Association Name="CineplexMovie">
           <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="*" />
@@ -184,6 +182,11 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
             <End Role="Movies" EntitySet="Movies1" />
           </AssociationSet>
           <EntitySet Name="Bookings" EntityType="Assignment2DataModel.Booking" />
+          <AssociationSet Name="CineplexMovie1" Association="Assignment2DataModel.CineplexMovie1">
+            <End Role="Cineplex" EntitySet="Cineplexes" />
+            <End Role="Movies" EntitySet="Movies1" />
+          </AssociationSet>
+          <EntitySet Name="Sessions" EntityType="Assignment2DataModel.Session" />
         </EntityContainer>
         <EntityType Name="Booking">
           <Key>
@@ -201,6 +204,22 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
           <Property Name="Session_Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Poster" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="CineplexMovie1">
+          <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
+          <End Type="Assignment2DataModel.Movies" Role="Movies" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="Session_ID" />
+          </Key>
+          <Property Name="Session_ID" Type="Int32" Nullable="false" />
+          <Property Name="Movie_ID" Type="Int32" Nullable="false" />
+          <Property Name="Movie_Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CineplexID" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Session_Time" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Session_Day" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -257,9 +276,6 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
             <EndProperty Name="Cineplex">
               <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
             </EndProperty>
-            <EndProperty Name="Movies">
-              <ScalarProperty Name="Movie_ID" ColumnName="MovieID" />
-            </EndProperty>
           </AssociationSetMapping>
           <EntitySetMapping Name="Bookings">
             <EntityTypeMapping TypeName="Assignment2DataModel.Booking">
@@ -271,6 +287,27 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
                 <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
                 <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
                 <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CineplexMovie1" TypeName="Assignment2DataModel.CineplexMovie1" StoreEntitySet="CineplexMovie">
+            <EndProperty Name="Movies">
+              <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
+            </EndProperty>
+            <EndProperty Name="Cineplex">
+              <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="Assignment2DataModel.Session">
+              <MappingFragment StoreEntitySet="Sessions">
+                <ScalarProperty Name="Session_Day" ColumnName="Session_Day" />
+                <ScalarProperty Name="Session_Time" ColumnName="Session_Time" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
+                <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
+                <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
+                <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

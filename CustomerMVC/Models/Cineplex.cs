@@ -18,6 +18,7 @@ namespace CustomerMVC.Models
         public Cineplex()
         {
             this.Movies = new HashSet<Movies>();
+            this.Movies1 = new HashSet<Movies>();
         }
     
         public int CineplexID { get; set; }
@@ -28,5 +29,7 @@ namespace CustomerMVC.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Movies> Movies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Movies> Movies1 { get; set; }
     }
 }
