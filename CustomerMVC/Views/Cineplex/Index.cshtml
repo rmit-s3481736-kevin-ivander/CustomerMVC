@@ -32,7 +32,7 @@
                 @Html.DisplayFor(modelItem => item.ShortDescription)
             </td>
             <td>
-                @Html.ActionLink("View sessions in this theatre", "Create", new { location = item.Location })
+                <p class="btn btn-default">@Html.ActionLink("Cinema Info", "Details", new { id=item.CineplexID })</p>
             </td>
         </tr>
     }
