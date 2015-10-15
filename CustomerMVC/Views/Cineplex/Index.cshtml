@@ -13,6 +13,10 @@
         <th>
             Maps
         </th>
+        <th>
+            Short Description
+        </th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -22,7 +26,13 @@
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="1" style="width:250px;height:210px;">
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Location)" style="width:250px;height:210px;">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.ActionLink("View sessions in this theatre", "Create", new { location = item.Location })
             </td>
         </tr>
     }
