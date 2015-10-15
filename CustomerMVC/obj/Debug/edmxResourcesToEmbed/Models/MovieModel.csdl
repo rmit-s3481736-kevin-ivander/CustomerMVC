@@ -56,5 +56,23 @@
       <End Role="Cineplex" EntitySet="Cineplexes" />
       <End Role="Movies" EntitySet="Movies1" />
     </AssociationSet>
+    <EntitySet Name="Bookings" EntityType="Assignment2DataModel.Booking" />
   </EntityContainer>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_ID" />
+      <PropertyRef Name="Movie_ID" />
+      <PropertyRef Name="Movie_Title" />
+      <PropertyRef Name="Movie_Time" />
+      <PropertyRef Name="Session_Time" />
+      <PropertyRef Name="Poster" />
+    </Key>
+    <Property Name="Booking_ID" Type="Int32" Nullable="false" />
+    <Property Name="Movie_ID" Type="Int32" Nullable="false" />
+    <Property Name="Movie_Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Movie_Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Session_Time" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Poster" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

@@ -54,5 +54,18 @@
         <ScalarProperty Name="Movie_ID" ColumnName="MovieID" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="Assignment2DataModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Session_Time" ColumnName="Session_Time" />
+          <ScalarProperty Name="Movie_Time" ColumnName="Movie_Time" />
+          <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
+          <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
+          <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

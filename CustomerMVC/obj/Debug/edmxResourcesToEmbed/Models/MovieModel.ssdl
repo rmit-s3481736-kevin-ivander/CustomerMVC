@@ -1,5 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_ID" />
+      <PropertyRef Name="Movie_ID" />
+      <PropertyRef Name="Movie_Title" />
+      <PropertyRef Name="Movie_Time" />
+      <PropertyRef Name="Session_Time" />
+      <PropertyRef Name="Poster" />
+    </Key>
+    <Property Name="Booking_ID" Type="int" Nullable="false" />
+    <Property Name="Movie_ID" Type="int" Nullable="false" />
+    <Property Name="Movie_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Movie_Time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Session_Time" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Poster" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="Cineplex">
     <Key>
       <PropertyRef Name="CineplexID" />
@@ -79,6 +98,17 @@
     <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MovieComingSoon" EntityType="Self.MovieComingSoon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Booking].[Booking_ID] AS [Booking_ID], 
+    [Booking].[Movie_ID] AS [Movie_ID], 
+    [Booking].[Movie_Title] AS [Movie_Title], 
+    [Booking].[Movie_Time] AS [Movie_Time], 
+    [Booking].[Session_Time] AS [Session_Time], 
+    [Booking].[Price] AS [Price], 
+    [Booking].[Poster] AS [Poster]
+    FROM [dbo].[Booking] AS [Booking]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__CineplexM__Cinep__182C9B23" Association="Self.FK__CineplexM__Cinep__182C9B23">
       <End Role="Cineplex" EntitySet="Cineplex" />
       <End Role="CineplexMovie" EntitySet="CineplexMovie" />
