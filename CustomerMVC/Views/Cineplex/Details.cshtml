@@ -1,5 +1,6 @@
 ﻿@model CustomerMVC.Models.Cineplex
 
+
 @{
     ViewBag.Title = "Details";
 }
@@ -43,6 +44,25 @@
         </dd>
 
     </dl>
+</div>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Images
+            </th>
+                        <th></th>
+        </tr>
+        <tr>
+            @foreach (var item in Model.Movies)
+            {
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;" /><br />
+                    @Html.ActionLink(item.Movie_Title, "Details", new { id = item.Movie_ID })
+                </td>
+        }
+        </tr>
+</table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CineplexID }) |

@@ -15,8 +15,7 @@ namespace CustomerMVC.Models
     
     public partial class Assignment2Entities : DbContext
     {
-        public Assignment2Entities()
-            : base("name=Assignment2Entities")
+        public Assignment2Entities() : base("name=Assignment2Entities")
         {
         }
     
