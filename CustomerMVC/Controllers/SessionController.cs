@@ -15,10 +15,28 @@ namespace CustomerMVC.Controllers
         private Assignment2Entities db = new Assignment2Entities();
 
         // GET: /Session/
-        public ActionResult Index()
+        public ActionResult Index(string cinema, string searchString)
         {
-            var sessions = db.Sessions.Include(s => s.Movy);
-            return View(sessions.ToList());
+            var locationList = new List<string>();
+
+            var location = from d in db.Sessions orderby d.Location select d.Location;
+
+            locationList.AddRange(location.Distinct());
+            ViewBag.cinema = new SelectList(locationList);
+
+            var movie = from s in db.Sessions select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movie = movie.Where(s => s.Movie_Title.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(cinema))
+            {
+                movie = movie.Where(x => x.Location == cinema);
+            }
+            return View(movie);
+            //var sessions = db.Sessions.Include(s => s.Movy);
+            //return View(sessions.ToList());
         }
 
         // GET: /Session/Details/5

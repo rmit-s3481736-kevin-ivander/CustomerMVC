@@ -21,17 +21,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MovieComingSoon">
-      <EntityTypeMapping TypeName="Assignment2DataModel.MovieComingSoon">
-        <MappingFragment StoreEntitySet="MovieComingSoon">
-          <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
-          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
-          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Movies1">
       <EntityTypeMapping TypeName="Assignment2DataModel.Movies">
         <MappingFragment StoreEntitySet="Movies">
@@ -77,6 +66,17 @@
           <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
           <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
           <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovieComingSoons">
+      <EntityTypeMapping TypeName="Assignment2DataModel.MovieComingSoon">
+        <MappingFragment StoreEntitySet="MovieComingSoon">
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

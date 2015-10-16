@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Booking Details</h2>
 
 <div>
     <h4>Session</h4>
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Movie_Title)
+            Title
         </dt>
 
         <dd>
@@ -19,15 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CineplexID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CineplexID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            Location
         </dt>
 
         <dd>
@@ -35,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Session_Time)
+            Time
         </dt>
 
         <dd>
@@ -43,24 +35,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Session_Day)
+            Day
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Session_Day)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Movy.Movie_Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Movy.Movie_Title)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Session_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+<p class="btn btn-default">@Html.ActionLink("Back to Session", "Index")</p>
+<p class="btn btn-default">@Html.ActionLink("Continue Booking", "Create", "Booking")</p>
 </p>

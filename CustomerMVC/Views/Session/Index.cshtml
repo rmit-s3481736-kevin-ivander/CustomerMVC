@@ -4,60 +4,54 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Sessions</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Movie_Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CineplexID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Session_Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Session_Day)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Movy.Movie_Title)
-        </th>
-        <th></th>
-    </tr>
+    @using (Html.BeginForm("Index", "Session", FormMethod.Get))
+    {
+    <p>
+        Location: @Html.DropDownList("cinema", "All")
+        Title: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+    }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Day
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Movie_Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CineplexID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Session_Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Session_Day)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Movy.Movie_Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Session_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Session_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Session_ID })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie_Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session_Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session_Day)
+                </td>
+                <td>
+                    <p class="btn btn-default">@Html.ActionLink("More Info", "Details", new { id = item.Movie_ID })</p>
+                    <p class="btn btn-default">@Html.ActionLink("Make a Booking", "Details", new { id = item.Session_ID })</p>
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>

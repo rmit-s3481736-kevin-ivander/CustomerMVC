@@ -174,16 +174,6 @@
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="MovieComingSoon">
-          <Key>
-            <PropertyRef Name="MovieComingSoonID" />
-          </Key>
-          <Property Name="MovieComingSoonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Movies">
           <Key>
             <PropertyRef Name="Movie_ID" />
@@ -203,7 +193,6 @@
         <EntityContainer Name="Assignment2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cineplexes" EntityType="Self.Cineplex" />
           <EntitySet Name="Enquiries" EntityType="Self.Enquiry" />
-          <EntitySet Name="MovieComingSoons" EntityType="Self.MovieComingSoon" />
           <EntitySet Name="Movies1" EntityType="Assignment2DataModel.Movies" />
           <AssociationSet Name="CineplexMovie1" Association="Assignment2DataModel.CineplexMovie1">
             <End Role="Cineplex" EntitySet="Cineplexes" />
@@ -219,6 +208,7 @@
             <End Role="Movies" EntitySet="Movies1" />
             <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
+          <EntitySet Name="MovieComingSoons" EntityType="Assignment2DataModel.MovieComingSoon" />
         </EntityContainer>
         <Association Name="CineplexMovie1">
           <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
@@ -274,6 +264,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MovieComingSoon">
+          <Key>
+            <PropertyRef Name="MovieComingSoonID" />
+          </Key>
+          <Property Name="MovieComingSoonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -297,17 +297,6 @@
                 <ScalarProperty Name="EnquiryID" ColumnName="EnquiryID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MovieComingSoon">
-            <EntityTypeMapping TypeName="Assignment2DataModel.MovieComingSoon">
-              <MappingFragment StoreEntitySet="MovieComingSoon">
-                <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
-                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -356,6 +345,17 @@
                 <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
                 <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
                 <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieComingSoons">
+            <EntityTypeMapping TypeName="Assignment2DataModel.MovieComingSoon">
+              <MappingFragment StoreEntitySet="MovieComingSoon">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

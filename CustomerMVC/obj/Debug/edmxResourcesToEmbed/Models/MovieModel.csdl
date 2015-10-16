@@ -19,16 +19,6 @@
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="MovieComingSoon">
-    <Key>
-      <PropertyRef Name="MovieComingSoonID" />
-    </Key>
-    <Property Name="MovieComingSoonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="Movies">
     <Key>
       <PropertyRef Name="Movie_ID" />
@@ -48,7 +38,6 @@
   <EntityContainer Name="Assignment2Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cineplexes" EntityType="Self.Cineplex" />
     <EntitySet Name="Enquiries" EntityType="Self.Enquiry" />
-    <EntitySet Name="MovieComingSoons" EntityType="Self.MovieComingSoon" />
     <EntitySet Name="Movies1" EntityType="Assignment2DataModel.Movies" />
     <AssociationSet Name="CineplexMovie1" Association="Assignment2DataModel.CineplexMovie1">
       <End Role="Cineplex" EntitySet="Cineplexes" />
@@ -64,6 +53,7 @@
       <End Role="Movies" EntitySet="Movies1" />
       <End Role="Session" EntitySet="Sessions" />
     </AssociationSet>
+    <EntitySet Name="MovieComingSoons" EntityType="Assignment2DataModel.MovieComingSoon" />
   </EntityContainer>
   <Association Name="CineplexMovie1">
     <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
@@ -119,4 +109,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="MovieComingSoon">
+    <Key>
+      <PropertyRef Name="MovieComingSoonID" />
+    </Key>
+    <Property Name="MovieComingSoonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

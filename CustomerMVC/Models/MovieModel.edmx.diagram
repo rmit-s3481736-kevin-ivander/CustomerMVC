@@ -7,13 +7,13 @@
       <Diagram DiagramId="0aab80918e074272846f503925644354" Name="Diagram1">
         <EntityTypeShape EntityType="Assignment2DataModel.Cineplex" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Assignment2DataModel.Enquiry" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Assignment2DataModel.MovieComingSoon" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Assignment2DataModel.Movies" Width="1.5" PointX="3.625" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="Assignment2DataModel.CineplexMovie1" />
         <EntityTypeShape EntityType="Assignment2DataModel.Booking" Width="1.5" PointX="5.875" PointY="3.625" />
         <AssociationConnector Association="Assignment2DataModel.FK__Booking__Movie_I__52593CB8" />
         <EntityTypeShape EntityType="Assignment2DataModel.Session" Width="1.5" PointX="5.875" PointY="0.75" />
         <AssociationConnector Association="Assignment2DataModel.FK__Sessions__Movie___571DF1D5" />
+        <EntityTypeShape EntityType="Assignment2DataModel.MovieComingSoon" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
