@@ -300,7 +300,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MovieComingSoons">
+          <EntitySetMapping Name="MovieComingSoon">
             <EntityTypeMapping TypeName="Assignment2DataModel.MovieComingSoon">
               <MappingFragment StoreEntitySet="MovieComingSoon">
                 <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />

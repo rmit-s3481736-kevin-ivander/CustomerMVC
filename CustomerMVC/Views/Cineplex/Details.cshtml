@@ -56,7 +56,7 @@
         <tr>
             @foreach (var item in Model.Movies)
             {
-                <td>
+                <td colspan="200">
                     <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;" /><br />
                     @Html.ActionLink(item.Movie_Title, "Details", new { id = item.Movie_ID })
                 </td>
