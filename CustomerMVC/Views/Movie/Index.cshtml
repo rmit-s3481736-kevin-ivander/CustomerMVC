@@ -5,7 +5,15 @@
 }
 
 <h2>Now Showing</h2>
-
+<p>
+    @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+    {
+    <p>
+        Movie Title: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Search" />
+    </p>
+    }
+    </p>
 <table class="table">
     <tr>
         <th>

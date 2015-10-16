@@ -15,9 +15,15 @@ namespace CustomerMVC.Controllers
         private Assignment2Entities db = new Assignment2Entities();
 
         // GET: /Movie/
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Movies1.ToList());
+            var movie = from m in db.Movies1 select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movie = movie.Where(s => s.Movie_Title.Contains(searchString));
+            }
+            return View(movie);
+            //return View(db.Movies1.ToList());
         }
 
         // GET: /Movie/Details/5

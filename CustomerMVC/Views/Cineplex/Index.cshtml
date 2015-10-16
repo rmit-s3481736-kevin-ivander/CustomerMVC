@@ -5,36 +5,45 @@
 }
 
 <h2>Cineplex</h2>
-<table class="table">
-    <tr>
-        <th>
-            Location
-        </th>
-        <th>
-            Maps
-        </th>
-        <th>
-            Short Description
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+<p>
+    @using (Html.BeginForm("Index", "Cineplex", FormMethod.Get))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Location)" style="width:250px;height:210px;">
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShortDescription)
-            </td>
-            <td>
-                <p class="btn btn-default">@Html.ActionLink("Cinema Info", "Details", new { id=item.CineplexID })</p>
-            </td>
-        </tr>
+    <p>
+        Cinema Location: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Search" />
+    </p>
     }
+    </p></hr>
+    <table class="table">
+        <tr>
+            <th>
+                Location
+            </th>
+            <th>
+                Maps
+            </th>
+            <th>
+                Short Description
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Location)" style="width:250px;height:210px;">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+                <td>
+                    <p class="btn btn-default">@Html.ActionLink("Cinema Info", "Details", new { id = item.CineplexID })</p>
+                </td>
+            </tr>
+        }
+
+    </table>
