@@ -15,7 +15,8 @@ namespace CustomerMVC.Models
     
     public partial class Assignment2Entities : DbContext
     {
-        public Assignment2Entities() : base("name=Assignment2Entities")
+        public Assignment2Entities()
+            : base("name=Assignment2Entities")
         {
         }
     
@@ -29,5 +30,6 @@ namespace CustomerMVC.Models
         public virtual DbSet<MovieComingSoon> MovieComingSoons { get; set; }
         public virtual DbSet<Movies> Movies1 { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }

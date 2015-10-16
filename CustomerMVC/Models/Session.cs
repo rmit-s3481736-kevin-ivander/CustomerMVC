@@ -12,21 +12,16 @@ namespace CustomerMVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cineplex
+    public partial class Session
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cineplex()
-        {
-            this.Movies1 = new HashSet<Movies>();
-        }
-    
+        public int Session_ID { get; set; }
+        public int Movie_ID { get; set; }
+        public string Movie_Title { get; set; }
         public int CineplexID { get; set; }
         public string Location { get; set; }
-        public string ShortDescription { get; set; }
-        public string LongDescription { get; set; }
-        public string ImageUrl { get; set; }
+        public string Session_Time { get; set; }
+        public string Session_Day { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movies> Movies1 { get; set; }
+        public virtual Movies Movy { get; set; }
     }
 }

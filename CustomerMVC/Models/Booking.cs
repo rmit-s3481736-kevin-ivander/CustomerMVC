@@ -21,5 +21,7 @@ namespace CustomerMVC.Models
         public System.DateTime Session_Time { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string Poster { get; set; }
+    
+        public virtual Movies Movy { get; set; }
     }
 }

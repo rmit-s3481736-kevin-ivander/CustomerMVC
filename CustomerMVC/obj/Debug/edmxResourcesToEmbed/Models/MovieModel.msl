@@ -46,12 +46,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="CineplexMovie" TypeName="Assignment2DataModel.CineplexMovie" StoreEntitySet="CineplexMovie">
+    <AssociationSetMapping Name="CineplexMovie1" TypeName="Assignment2DataModel.CineplexMovie1" StoreEntitySet="CineplexMovie">
+      <EndProperty Name="Movies">
+        <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
+      </EndProperty>
       <EndProperty Name="Cineplex">
         <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
-      </EndProperty>
-      <EndProperty Name="Movies">
-        <ScalarProperty Name="Movie_ID" ColumnName="MovieID" />
       </EndProperty>
     </AssociationSetMapping>
     <EntitySetMapping Name="Bookings">
@@ -64,6 +64,19 @@
           <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
           <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
           <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="Assignment2DataModel.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="Session_Day" ColumnName="Session_Day" />
+          <ScalarProperty Name="Session_Time" ColumnName="Session_Time" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
+          <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
+          <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
+          <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -165,6 +165,7 @@
     <Compile Include="Controllers\CineplexController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +199,9 @@
       <DependentUpon>MovieModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Movies.cs">
+      <DependentUpon>MovieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Session.cs">
       <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,6 +287,11 @@
     <Content Include="Views\Cineplex\Details.cshtml" />
     <Content Include="Views\Cineplex\Edit.cshtml" />
     <Content Include="Views\Cineplex\Index.cshtml" />
+    <Content Include="Views\Session\Create.cshtml" />
+    <Content Include="Views\Session\Delete.cshtml" />
+    <Content Include="Views\Session\Details.cshtml" />
+    <Content Include="Views\Session\Edit.cshtml" />
+    <Content Include="Views\Session\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

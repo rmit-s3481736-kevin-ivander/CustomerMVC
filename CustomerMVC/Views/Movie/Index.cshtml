@@ -6,9 +6,6 @@
 
 <h2>Now Showing</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -37,7 +34,10 @@
             @Html.DisplayFor(modelItem => item.Short_Description)
         </td>
         <td>
-            @Html.ActionLink("Make Booking", "Details", new { id=item.Movie_ID })
+            <p class="btn btn-default">@Html.ActionLink("More Info", "Details", new { id = item.Movie_ID })</p>
+            <br />
+            <br />
+            <p class="btn btn-default">@Html.ActionLink("Session", "Index", "Session")</p>
         </td>
     </tr>
 }

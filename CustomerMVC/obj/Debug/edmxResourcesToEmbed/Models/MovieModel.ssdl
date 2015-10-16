@@ -1,15 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Booking">
     <Key>
       <PropertyRef Name="Booking_ID" />
-      <PropertyRef Name="Movie_ID" />
-      <PropertyRef Name="Movie_Title" />
-      <PropertyRef Name="Movie_Time" />
-      <PropertyRef Name="Session_Time" />
-      <PropertyRef Name="Poster" />
     </Key>
     <Property Name="Booking_ID" Type="int" Nullable="false" />
     <Property Name="Movie_ID" Type="int" Nullable="false" />
@@ -32,10 +25,10 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
   <EntityType Name="CineplexMovie">
     <Key>
       <PropertyRef Name="CineplexID" />
-      <PropertyRef Name="MovieID" />
+      <PropertyRef Name="Movie_ID" />
     </Key>
     <Property Name="CineplexID" Type="int" Nullable="false" />
-    <Property Name="MovieID" Type="int" Nullable="false" />
+    <Property Name="Movie_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Enquiry">
     <Key>
@@ -68,7 +61,31 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
     <Property Name="Rating" Type="nvarchar" MaxLength="50" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
-  <Association Name="FK__CineplexM__Cinep__182C9B23">
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="Session_ID" />
+    </Key>
+    <Property Name="Session_ID" Type="int" Nullable="false" />
+    <Property Name="Movie_ID" Type="int" Nullable="false" />
+    <Property Name="Movie_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CineplexID" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Session_Time" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Session_Day" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Booking__Movie_I__52593CB8">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="Movie_ID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Movie_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CineplexM__Cinep__5070F446">
     <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="1" />
     <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
     <ReferentialConstraint>
@@ -80,7 +97,7 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CineplexM__Movie__1920BF5C">
+  <Association Name="FK__CineplexM__Movie__5165187F">
     <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
     <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
     <ReferentialConstraint>
@@ -88,34 +105,45 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
         <PropertyRef Name="Movie_ID" />
       </Principal>
       <Dependent Role="CineplexMovie">
-        <PropertyRef Name="MovieID" />
+        <PropertyRef Name="Movie_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sessions__Movie___571DF1D5">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
+    <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="Movie_ID" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="Movie_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Assignment2DataModelStoreContainer">
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cineplex" EntityType="Self.Cineplex" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CineplexMovie" EntityType="Self.CineplexMovie" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MovieComingSoon" EntityType="Self.MovieComingSoon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Booking" EntityType="Self.Booking" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Booking].[Booking_ID] AS [Booking_ID], 
-    [Booking].[Movie_ID] AS [Movie_ID], 
-    [Booking].[Movie_Title] AS [Movie_Title], 
-    [Booking].[Movie_Time] AS [Movie_Time], 
-    [Booking].[Session_Time] AS [Session_Time], 
-    [Booking].[Price] AS [Price], 
-    [Booking].[Poster] AS [Poster]
-    FROM [dbo].[Booking] AS [Booking]</DefiningQuery>
-    </EntitySet>
-    <AssociationSet Name="FK__CineplexM__Cinep__182C9B23" Association="Self.FK__CineplexM__Cinep__182C9B23">
+    <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Booking__Movie_I__52593CB8" Association="Self.FK__Booking__Movie_I__52593CB8">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CineplexM__Cinep__5070F446" Association="Self.FK__CineplexM__Cinep__5070F446">
       <End Role="Cineplex" EntitySet="Cineplex" />
       <End Role="CineplexMovie" EntitySet="CineplexMovie" />
     </AssociationSet>
-    <AssociationSet Name="FK__CineplexM__Movie__1920BF5C" Association="Self.FK__CineplexM__Movie__1920BF5C">
+    <AssociationSet Name="FK__CineplexM__Movie__5165187F" Association="Self.FK__CineplexM__Movie__5165187F">
       <End Role="Movies" EntitySet="Movies" />
       <End Role="CineplexMovie" EntitySet="CineplexMovie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sessions__Movie___571DF1D5" Association="Self.FK__Sessions__Movie___571DF1D5">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="Sessions" EntitySet="Sessions" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
