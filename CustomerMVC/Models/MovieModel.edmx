@@ -228,7 +228,7 @@ warning 6002: The table/view 'Assignment2.dbo.Booking' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MovieComingSoons">
+          <EntitySetMapping Name="MovieComingSoon">
             <EntityTypeMapping TypeName="Assignment2DataModel.MovieComingSoon">
               <MappingFragment StoreEntitySet="MovieComingSoon">
                 <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
