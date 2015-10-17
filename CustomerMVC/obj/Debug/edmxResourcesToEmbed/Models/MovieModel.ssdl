@@ -7,10 +7,14 @@
     <Property Name="Booking_ID" Type="int" Nullable="false" />
     <Property Name="Movie_ID" Type="int" Nullable="false" />
     <Property Name="Movie_Title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Movie_Time" Type="time" Precision="7" Nullable="false" />
-    <Property Name="Session_Time" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Movie_Time" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Session_Time" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="Poster" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ticket" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Poster" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Cineplex">
     <Key>
@@ -60,6 +64,15 @@
     <Property Name="Duration" Type="int" />
     <Property Name="Rating" Type="nvarchar" MaxLength="50" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="CardNo" />
+    </Key>
+    <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CardNo" Type="int" Nullable="false" />
+    <Property Name="CCV" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Sessions">
     <Key>
@@ -128,6 +141,7 @@
     <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MovieComingSoon" EntityType="Self.MovieComingSoon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Booking__Movie_I__52593CB8" Association="Self.FK__Booking__Movie_I__52593CB8">
       <End Role="Movies" EntitySet="Movies" />

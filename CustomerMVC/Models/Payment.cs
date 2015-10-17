@@ -12,20 +12,11 @@ namespace CustomerMVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Booking
+    public partial class Payment
     {
-        public int Booking_ID { get; set; }
-        public int Movie_ID { get; set; }
-        public string Movie_Title { get; set; }
-        public string Movie_Time { get; set; }
-        public string Session_Time { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public Nullable<decimal> Ticket { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
-        public string Email { get; set; }
-        public string Poster { get; set; }
-    
-        public virtual Movies Movy { get; set; }
+        public int CardNo { get; set; }
+        public int CCV { get; set; }
     }
 }

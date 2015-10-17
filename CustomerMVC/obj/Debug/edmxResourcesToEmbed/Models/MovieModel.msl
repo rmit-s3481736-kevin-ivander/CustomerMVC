@@ -43,19 +43,6 @@
         <ScalarProperty Name="CineplexID" ColumnName="CineplexID" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="Bookings">
-      <EntityTypeMapping TypeName="Assignment2DataModel.Booking">
-        <MappingFragment StoreEntitySet="Booking">
-          <ScalarProperty Name="Poster" ColumnName="Poster" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Session_Time" ColumnName="Session_Time" />
-          <ScalarProperty Name="Movie_Time" ColumnName="Movie_Time" />
-          <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
-          <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
-          <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Sessions">
       <EntityTypeMapping TypeName="Assignment2DataModel.Session">
         <MappingFragment StoreEntitySet="Sessions">
@@ -77,6 +64,33 @@
           <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="Assignment2DataModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Ticket" ColumnName="Ticket" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Session_Time" ColumnName="Session_Time" />
+          <ScalarProperty Name="Movie_Time" ColumnName="Movie_Time" />
+          <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
+          <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
+          <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="Assignment2DataModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="CCV" ColumnName="CCV" />
+          <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

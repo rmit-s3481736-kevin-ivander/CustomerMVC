@@ -10,107 +10,107 @@ using CustomerMVC.Models;
 
 namespace CustomerMVC.Controllers
 {
-    public class BookingController : Controller
+    public class PaymentController : Controller
     {
         private Assignment2Entities db = new Assignment2Entities();
 
-        // GET: /Booking/
+        // GET: /Payment/
         public ActionResult Index()
         {
-           return View(db.Bookings.ToList());
+            return View(db.Payments.ToList());
         }
 
-        // GET: /Booking/Details/5
+        // GET: /Payment/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
+            Payment payment = db.Payments.Find(id);
+            if (payment == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(payment);
         }
 
-        // GET: /Booking/Create
+        // GET: /Payment/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Booking/Create
+        // POST: /Payment/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Booking_ID,Movie_ID,Movie_Title,Movie_Time,Session_Time,Price,Poster")] Booking booking)
+        public ActionResult Create([Bind(Include="First_Name,Last_Name,CardNo,CCV")] Payment payment)
         {
             if (ModelState.IsValid)
             {
-                db.Bookings.Add(booking);
+                db.Payments.Add(payment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(booking);
+            return View(payment);
         }
 
-        // GET: /Booking/Edit/5
+        // GET: /Payment/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
+            Payment payment = db.Payments.Find(id);
+            if (payment == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(payment);
         }
 
-        // POST: /Booking/Edit/5
+        // POST: /Payment/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Booking_ID,Movie_ID,Movie_Title,Movie_Time,Session_Time,Price,Poster")] Booking booking)
+        public ActionResult Edit([Bind(Include="First_Name,Last_Name,CardNo,CCV")] Payment payment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(booking).State = EntityState.Modified;
+                db.Entry(payment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(booking);
+            return View(payment);
         }
 
-        // GET: /Booking/Delete/5
+        // GET: /Payment/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
+            Payment payment = db.Payments.Find(id);
+            if (payment == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(payment);
         }
 
-        // POST: /Booking/Delete/5
+        // POST: /Payment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Booking booking = db.Bookings.Find(id);
-            db.Bookings.Remove(booking);
+            Payment payment = db.Payments.Find(id);
+            db.Payments.Remove(payment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

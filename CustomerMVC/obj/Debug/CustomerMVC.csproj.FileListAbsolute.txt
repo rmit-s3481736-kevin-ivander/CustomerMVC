@@ -107,4 +107,3 @@ C:\Users\Max\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.Owin.Security.Microso
 C:\Users\Max\Desktop\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.csprojResolveAssemblyReference.cache
 C:\Users\Max\Desktop\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.dll
 C:\Users\Max\Desktop\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.pdb
-\\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.csprojResolveAssemblyReference.cache

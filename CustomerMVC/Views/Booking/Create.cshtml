@@ -2,72 +2,84 @@
 
 @{
     ViewBag.Title = "Create";
+    var tempData = TempData["Booking"] as CustomerMVC.Models.Booking;
 }
 
 <h2>Booking Page</h2>
+<div>
+    <h4>Movies Detail</h4>
+    <br />
+    <dl class="dl-horizontal">
+        <dt>
+            Movie
+        </dt>
 
+        <dd>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @tempData.Movie_Title
+                </div>
+            </div>
+            <br />
+            <img src="@tempData.Poster" alt="1" style="width:170px;height:230px;" />
+        </dd>
+
+        <dt>
+            Time
+        </dt>
+
+        <dd>
+            @tempData.Movie_Time
+        </dd>
+
+        <dt>
+            Day
+        </dt>
+
+        <dd>
+            @tempData.Session_Time
+        </dd>
+    </dl>
+</div>
+<hr />
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Tickets</h4>
+        <h4>Booking Details</h4>
         <hr />
         @Html.ValidationSummary(true)
-
+        <h4>Tickets</h4>
         <div class="form-group">
-            @Html.LabelFor(model => model.Booking_ID, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Ticket, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Booking_ID)
-                @Html.ValidationMessageFor(model => model.Booking_ID)
+                @Html.EditorFor(model => model.Ticket)
+                @Html.ValidationMessageFor(model => model.Ticket)
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div>First Name</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.First_Name)
+                @Html.ValidationMessageFor(model => model.First_Name)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Movie_ID, new { @class = "control-label col-md-2" })
+            Last Name
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Movie_ID)
-                @Html.ValidationMessageFor(model => model.Movie_ID)
+                @Html.EditorFor(model => model.Last_Name)
+                @Html.ValidationMessageFor(model => model.Last_Name)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Movie_Title, new { @class = "control-label col-md-2" })
+            Email
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Movie_Title)
-                @Html.ValidationMessageFor(model => model.Movie_Title)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Movie_Time, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Movie_Time)
-                @Html.ValidationMessageFor(model => model.Movie_Time)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Session_Time, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Session_Time)
-                @Html.ValidationMessageFor(model => model.Session_Time)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Price)
-                @Html.ValidationMessageFor(model => model.Price)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Poster, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Poster)
-                @Html.ValidationMessageFor(model => model.Poster)
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
             </div>
         </div>
 
@@ -78,7 +90,8 @@
         </div>
     </div>
 }
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <p class="btn btn-default">@Html.ActionLink("Confirm Booking", "Index", "Booking")</p>
+    <p class="btn btn-default">@Html.ActionLink("Cancel Booking", "Index", "Session")</p>
+    
 </div>

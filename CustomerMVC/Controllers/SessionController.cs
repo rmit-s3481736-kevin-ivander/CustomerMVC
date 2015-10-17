@@ -47,10 +47,19 @@ namespace CustomerMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Session session = db.Sessions.Find(id);
+            Movies movies = db.Movies1.Find(id);
             if (session == null)
             {
                 return HttpNotFound();
             }
+            var storedata = new Booking
+            {
+            Movie_Title = session.Movie_Title,
+            Movie_Time = session.Session_Time,
+            Session_Time = session.Session_Day,
+            Poster = movies.Poster
+            };
+            TempData["Booking"] = storedata;
             return View(session);
         }
 
