@@ -20,7 +20,8 @@ namespace CustomerMVC.Models
         public string Movie_Time { get; set; }
         public string Session_Time { get; set; }
         public Nullable<decimal> Price { get; set; }
-        public Nullable<int> Ticket { get; set; }
+        public Nullable<int> No_of_Ticket { get; set; }
+        public string Ticket_Type { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
         public string Email { get; set; }
