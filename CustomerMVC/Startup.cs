@@ -3,6 +3,7 @@ using Owin;
 
 [assembly: OwinStartupAttribute(typeof(CustomerMVC.Startup))]
 namespace CustomerMVC
+
 {
     public partial class Startup
     {
