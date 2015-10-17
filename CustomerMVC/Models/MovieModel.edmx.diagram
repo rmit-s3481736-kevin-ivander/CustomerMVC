@@ -12,9 +12,9 @@
         <EntityTypeShape EntityType="Assignment2DataModel.Session" Width="1.5" PointX="5.875" PointY="0.75" />
         <AssociationConnector Association="Assignment2DataModel.FK__Sessions__Movie___571DF1D5" />
         <EntityTypeShape EntityType="Assignment2DataModel.MovieComingSoon" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Assignment2DataModel.Payment" Width="1.5" PointX="8.375" PointY="0.75" />
         <EntityTypeShape EntityType="Assignment2DataModel.Booking" Width="1.5" PointX="5.875" PointY="4.25" />
         <AssociationConnector Association="Assignment2DataModel.FK__Booking__Movie_I__52593CB8" />
-        <EntityTypeShape EntityType="Assignment2DataModel.Payment" Width="1.5" PointX="8.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

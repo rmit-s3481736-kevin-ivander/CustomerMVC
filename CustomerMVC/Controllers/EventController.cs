@@ -10,112 +10,107 @@ using CustomerMVC.Models;
 
 namespace CustomerMVC.Controllers
 {
-    public class BookingController : Controller
+    public class EventController : Controller
     {
         private Assignment2Entities db = new Assignment2Entities();
 
-        // GET: /Booking/
+        // GET: /Event/
         public ActionResult Index()
         {
-            var bookings = db.Bookings.Include(b => b.Movy);
-            return View(bookings.ToList());
+            return View(db.Enquiries.ToList());
         }
 
-        // GET: /Booking/Details/5
+        // GET: /Event/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
+            Enquiry enquiry = db.Enquiries.Find(id);
+            if (enquiry == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(enquiry);
         }
 
-        // GET: /Booking/Create
+        // GET: /Event/Create
         public ActionResult Create()
         {
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title");
             return View();
         }
 
-        // POST: /Booking/Create
+        // POST: /Event/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Booking_ID,Movie_ID,Movie_Title,Movie_Time,Session_Time,Price,Ticket,First_Name,Last_Name,Email,Poster")] Booking booking)
+        public ActionResult Create([Bind(Include="EnquiryID,Email,Message")] Enquiry enquiry)
         {
             if (ModelState.IsValid)
             {
-                db.Bookings.Add(booking);
+                db.Enquiries.Add(enquiry);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title", booking.Movie_ID);
-            return View(booking);
+            return View(enquiry);
         }
 
-        // GET: /Booking/Edit/5
+        // GET: /Event/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
+            Enquiry enquiry = db.Enquiries.Find(id);
+            if (enquiry == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title", booking.Movie_ID);
-            return View(booking);
+            return View(enquiry);
         }
 
-        // POST: /Booking/Edit/5
+        // POST: /Event/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Booking_ID,Movie_ID,Movie_Title,Movie_Time,Session_Time,Price,Ticket,First_Name,Last_Name,Email,Poster")] Booking booking)
+        public ActionResult Edit([Bind(Include="EnquiryID,Email,Message")] Enquiry enquiry)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(booking).State = EntityState.Modified;
+                db.Entry(enquiry).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title", booking.Movie_ID);
-            return View(booking);
+            return View(enquiry);
         }
 
-        // GET: /Booking/Delete/5
+        // GET: /Event/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
+            Enquiry enquiry = db.Enquiries.Find(id);
+            if (enquiry == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(enquiry);
         }
 
-        // POST: /Booking/Delete/5
+        // POST: /Event/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Booking booking = db.Bookings.Find(id);
-            db.Bookings.Remove(booking);
+            Enquiry enquiry = db.Enquiries.Find(id);
+            db.Enquiries.Remove(enquiry);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

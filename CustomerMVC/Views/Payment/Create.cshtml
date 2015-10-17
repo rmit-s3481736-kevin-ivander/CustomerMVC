@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Payment</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,12 +12,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Payment</h4>
+        <h4>Credit Card Details</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.First_Name, new { @class = "control-label col-md-2" })
+            First Name
             <div class="col-md-10">
                 @Html.EditorFor(model => model.First_Name)
                 @Html.ValidationMessageFor(model => model.First_Name)
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Last_Name, new { @class = "control-label col-md-2" })
+            Last Name
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Last_Name)
                 @Html.ValidationMessageFor(model => model.Last_Name)
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CardNo, new { @class = "control-label col-md-2" })
+            Card Number
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CardNo)
                 @Html.ValidationMessageFor(model => model.CardNo)
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CCV, new { @class = "control-label col-md-2" })
+            CCV
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CCV)
                 @Html.ValidationMessageFor(model => model.CCV)
@@ -50,15 +50,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Confirm Payment" class="btn btn-default" />
+            </div>
+            <div>
+                <p class="btn btn-default">@Html.ActionLink("Back", "Index", "Booking")</p>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

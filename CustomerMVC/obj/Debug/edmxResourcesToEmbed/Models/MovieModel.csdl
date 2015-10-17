@@ -49,12 +49,12 @@
       <End Role="Session" EntitySet="Sessions" />
     </AssociationSet>
     <EntitySet Name="MovieComingSoons" EntityType="Assignment2DataModel.MovieComingSoon" />
+    <EntitySet Name="Payments" EntityType="Assignment2DataModel.Payment" />
     <EntitySet Name="Bookings" EntityType="Assignment2DataModel.Booking" />
     <AssociationSet Name="FK__Booking__Movie_I__52593CB8" Association="Assignment2DataModel.FK__Booking__Movie_I__52593CB8">
       <End Role="Movies" EntitySet="Movies1" />
       <End Role="Booking" EntitySet="Bookings" />
     </AssociationSet>
-    <EntitySet Name="Payments" EntityType="Assignment2DataModel.Payment" />
   </EntityContainer>
   <Association Name="CineplexMovie1">
     <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
@@ -95,17 +95,26 @@
     <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="CardNo" />
+    </Key>
+    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CardNo" Type="Int32" Nullable="false" />
+    <Property Name="CCV" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Booking">
     <Key>
       <PropertyRef Name="Booking_ID" />
     </Key>
     <Property Name="Booking_ID" Type="Int32" Nullable="false" />
     <Property Name="Movie_ID" Type="Int32" Nullable="false" />
-    <Property Name="Movie_Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Movie_Time" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Session_Time" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Movie_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Movie_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Session_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Ticket" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Ticket" Type="Int32" />
     <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -124,13 +133,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Payment">
-    <Key>
-      <PropertyRef Name="CardNo" />
-    </Key>
-    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CardNo" Type="Int32" Nullable="false" />
-    <Property Name="CCV" Type="Int32" Nullable="false" />
-  </EntityType>
 </Schema>

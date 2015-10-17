@@ -59,6 +59,7 @@ namespace CustomerMVC.Controllers
             Session_Time = session.Session_Day,
             Poster = movies.Poster
             };
+            TempData["ConfirmBooking"] = storedata;
             TempData["Booking"] = storedata;
             return View(session);
         }

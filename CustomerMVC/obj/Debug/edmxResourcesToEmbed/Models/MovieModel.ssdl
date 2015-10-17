@@ -6,11 +6,11 @@
     </Key>
     <Property Name="Booking_ID" Type="int" Nullable="false" />
     <Property Name="Movie_ID" Type="int" Nullable="false" />
-    <Property Name="Movie_Title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Movie_Time" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="Session_Time" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Movie_Title" Type="nvarchar(max)" />
+    <Property Name="Movie_Time" Type="char" MaxLength="10" />
+    <Property Name="Session_Time" Type="nchar" MaxLength="10" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="Ticket" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Ticket" Type="int" />
     <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />

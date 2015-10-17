@@ -11,11 +11,11 @@
           </Key>
           <Property Name="Booking_ID" Type="int" Nullable="false" />
           <Property Name="Movie_ID" Type="int" Nullable="false" />
-          <Property Name="Movie_Title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Movie_Time" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="Session_Time" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Movie_Title" Type="nvarchar(max)" />
+          <Property Name="Movie_Time" Type="char" MaxLength="10" />
+          <Property Name="Session_Time" Type="nchar" MaxLength="10" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Ticket" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Ticket" Type="int" />
           <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
@@ -218,12 +218,12 @@
             <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
           <EntitySet Name="MovieComingSoons" EntityType="Assignment2DataModel.MovieComingSoon" />
+          <EntitySet Name="Payments" EntityType="Assignment2DataModel.Payment" />
           <EntitySet Name="Bookings" EntityType="Assignment2DataModel.Booking" />
           <AssociationSet Name="FK__Booking__Movie_I__52593CB8" Association="Assignment2DataModel.FK__Booking__Movie_I__52593CB8">
             <End Role="Movies" EntitySet="Movies1" />
             <End Role="Booking" EntitySet="Bookings" />
           </AssociationSet>
-          <EntitySet Name="Payments" EntityType="Assignment2DataModel.Payment" />
         </EntityContainer>
         <Association Name="CineplexMovie1">
           <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
@@ -264,17 +264,26 @@
           <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="CardNo" />
+          </Key>
+          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CardNo" Type="Int32" Nullable="false" />
+          <Property Name="CCV" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="Booking_ID" />
           </Key>
           <Property Name="Booking_ID" Type="Int32" Nullable="false" />
           <Property Name="Movie_ID" Type="Int32" Nullable="false" />
-          <Property Name="Movie_Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Movie_Time" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="Session_Time" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Movie_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Movie_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Session_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Ticket" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Ticket" Type="Int32" />
           <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -293,15 +302,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Payment">
-          <Key>
-            <PropertyRef Name="CardNo" />
-          </Key>
-          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CardNo" Type="Int32" Nullable="false" />
-          <Property Name="CCV" Type="Int32" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -374,6 +374,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="Assignment2DataModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="CCV" ColumnName="CCV" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Bookings">
             <EntityTypeMapping TypeName="Assignment2DataModel.Booking">
               <MappingFragment StoreEntitySet="Booking">
@@ -388,16 +398,6 @@
                 <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
                 <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
                 <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="Assignment2DataModel.Payment">
-              <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="CCV" ColumnName="CCV" />
-                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
-                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
-                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
