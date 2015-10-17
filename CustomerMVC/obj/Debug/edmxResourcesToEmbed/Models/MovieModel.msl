@@ -84,8 +84,7 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
           <ScalarProperty Name="First_Name" ColumnName="First_Name" />
-          <ScalarProperty Name="Ticket_Type" ColumnName="Ticket_Type" />
-          <ScalarProperty Name="No_of_Ticket" ColumnName="No_of_Ticket" />
+          <ScalarProperty Name="Ticket" ColumnName="Ticket" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Session_Time" ColumnName="Session_Time" />
           <ScalarProperty Name="Movie_Time" ColumnName="Movie_Time" />
