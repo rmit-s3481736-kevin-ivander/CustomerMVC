@@ -163,3 +163,7 @@ C:\Users\Max\Documents\CustomerMVC\CustomerMVC\bin\Microsoft.Owin.Security.Micro
 C:\Users\Max\Documents\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.csprojResolveAssemblyReference.cache
 C:\Users\Max\Documents\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.dll
 C:\Users\Max\Documents\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.pdb
+\\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.Core.dll
+\\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+\\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.Core.xml
+\\vmware-host\Shared Folders\Desktop\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
