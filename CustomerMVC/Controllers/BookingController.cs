@@ -17,7 +17,7 @@ namespace CustomerMVC.Controllers
         // GET: /Booking/
         public ActionResult Index()
         {
-            var bookings = db.Bookings.Include(b => b.Movy);
+            var bookings = db.Bookings;
             return View(bookings.ToList());
         }
 
@@ -39,7 +39,6 @@ namespace CustomerMVC.Controllers
         // GET: /Booking/Create
         public ActionResult Create()
         {
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title");
             return View();
         }
 
@@ -48,7 +47,7 @@ namespace CustomerMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Booking_ID,Movie_ID,Movie_Title,Movie_Time,Session_Time,Price,Ticket,First_Name,Last_Name,Email,Poster")] Booking booking)
+        public ActionResult Create([Bind(Include="Booking_ID,Movie_Title,Movie_Time,Session_Time,Price,Ticket,First_Name,Last_Name,Email,Poster")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +56,6 @@ namespace CustomerMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title", booking.Movie_ID);
             return View(booking);
         }
 
@@ -73,7 +71,6 @@ namespace CustomerMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title", booking.Movie_ID);
             return View(booking);
         }
 
@@ -82,7 +79,7 @@ namespace CustomerMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Booking_ID,Movie_ID,Movie_Title,Movie_Time,Session_Time,Price,Ticket,First_Name,Last_Name,Email,Poster")] Booking booking)
+        public ActionResult Edit([Bind(Include="Booking_ID,Movie_Title,Movie_Time,Session_Time,Price,Ticket,First_Name,Last_Name,Email,Poster")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +87,6 @@ namespace CustomerMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Movie_ID = new SelectList(db.Movies1, "Movie_ID", "Movie_Title", booking.Movie_ID);
             return View(booking);
         }
 
