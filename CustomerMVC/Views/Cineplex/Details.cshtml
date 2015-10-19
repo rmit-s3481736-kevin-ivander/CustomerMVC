@@ -53,18 +53,21 @@
             </th>
             <th></th>
         </tr>
-        <tr>
-            @foreach (var item in Model.Movies1)
-            {
-                <td colspan="200">
-                    <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;" /><br />
-                    @Html.ActionLink(item.Movie_Title, "Details", new { id = item.Movie_ID })
+        @foreach (var item in Model.Movies1)
+        {
+            <tr>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;" />
                 </td>
-            }
-        </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie_Title)
+                </td>
+                <td>
+                    <p class="btn btn-default">@Html.ActionLink("Movie Details", "Details", new { id = item.Movie_ID })</p>
+                    <p class="btn btn-default">@Html.ActionLink("Session", "Index", "Session")</p>
+                </td>
+            </tr>
+        }
     </table>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CineplexID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<p class="btn btn-default">@Html.ActionLink("Back", "Index")</p>
