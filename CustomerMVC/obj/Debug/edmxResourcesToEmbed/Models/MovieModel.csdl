@@ -33,7 +33,6 @@
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="Cineplexes1" Relationship="Assignment2DataModel.CineplexMovie1" FromRole="Movies" ToRole="Cineplex" />
     <NavigationProperty Name="Sessions" Relationship="Assignment2DataModel.FK__Sessions__Movie___571DF1D5" FromRole="Movies" ToRole="Session" />
-    <NavigationProperty Name="Bookings" Relationship="Assignment2DataModel.FK__Booking__Movie_I__52593CB8" FromRole="Movies" ToRole="Booking" />
   </EntityType>
   <EntityContainer Name="Assignment2Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cineplexes" EntityType="Self.Cineplex" />
@@ -49,12 +48,8 @@
       <End Role="Session" EntitySet="Sessions" />
     </AssociationSet>
     <EntitySet Name="MovieComingSoons" EntityType="Assignment2DataModel.MovieComingSoon" />
-    <EntitySet Name="Payments" EntityType="Assignment2DataModel.Payment" />
     <EntitySet Name="Bookings" EntityType="Assignment2DataModel.Booking" />
-    <AssociationSet Name="FK__Booking__Movie_I__52593CB8" Association="Assignment2DataModel.FK__Booking__Movie_I__52593CB8">
-      <End Role="Movies" EntitySet="Movies1" />
-      <End Role="Booking" EntitySet="Bookings" />
-    </AssociationSet>
+    <EntitySet Name="Payments" EntityType="Assignment2DataModel.Payment" />
   </EntityContainer>
   <Association Name="CineplexMovie1">
     <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
@@ -95,21 +90,11 @@
     <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Payment">
-    <Key>
-      <PropertyRef Name="CardNo" />
-    </Key>
-    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CardNo" Type="Int32" Nullable="false" />
-    <Property Name="CCV" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="Booking">
     <Key>
       <PropertyRef Name="Booking_ID" />
     </Key>
-    <Property Name="Booking_ID" Type="Int32" Nullable="false" />
-    <Property Name="Movie_ID" Type="Int32" Nullable="false" />
+    <Property Name="Booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Movie_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Movie_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="Session_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -119,18 +104,16 @@
     <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Poster" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Movy" Relationship="Assignment2DataModel.FK__Booking__Movie_I__52593CB8" FromRole="Booking" ToRole="Movies" />
   </EntityType>
-  <Association Name="FK__Booking__Movie_I__52593CB8">
-    <End Type="Assignment2DataModel.Movies" Role="Movies" Multiplicity="1" />
-    <End Type="Assignment2DataModel.Booking" Role="Booking" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Movies">
-        <PropertyRef Name="Movie_ID" />
-      </Principal>
-      <Dependent Role="Booking">
-        <PropertyRef Name="Movie_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="CardNo" />
+    </Key>
+    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CardNo" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="CCV" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiredDate" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

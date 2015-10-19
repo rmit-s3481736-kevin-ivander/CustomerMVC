@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Booking">
     <Key>
       <PropertyRef Name="Booking_ID" />
     </Key>
-    <Property Name="Booking_ID" Type="int" Nullable="false" />
-    <Property Name="Movie_ID" Type="int" Nullable="false" />
+    <Property Name="Booking_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Movie_Title" Type="nvarchar(max)" />
     <Property Name="Movie_Time" Type="char" MaxLength="10" />
     <Property Name="Session_Time" Type="nchar" MaxLength="10" />
@@ -71,8 +70,10 @@
     </Key>
     <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CardNo" Type="int" Nullable="false" />
-    <Property Name="CCV" Type="int" Nullable="false" />
+    <Property Name="CardNo" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="CCV" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="CardType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ExpiredDate" Type="date" />
   </EntityType>
   <EntityType Name="Sessions">
     <Key>
@@ -86,19 +87,7 @@
     <Property Name="Session_Time" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="Session_Day" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Booking__Movie_I__52593CB8">
-    <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
-    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Movies">
-        <PropertyRef Name="Movie_ID" />
-      </Principal>
-      <Dependent Role="Booking">
-        <PropertyRef Name="Movie_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__CineplexM__Cinep__5070F446">
+  <Association Name="FK__CineplexM__Cinep__1ED998B2">
     <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="1" />
     <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
     <ReferentialConstraint>
@@ -110,7 +99,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CineplexM__Movie__5165187F">
+  <Association Name="FK__CineplexM__Movie__1FCDBCEB">
     <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
     <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
     <ReferentialConstraint>
@@ -122,7 +111,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Sessions__Movie___571DF1D5">
+  <Association Name="FK__Sessions__Movie___20C1E124">
     <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
     <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,19 +132,15 @@
     <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Booking__Movie_I__52593CB8" Association="Self.FK__Booking__Movie_I__52593CB8">
-      <End Role="Movies" EntitySet="Movies" />
-      <End Role="Booking" EntitySet="Booking" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CineplexM__Cinep__5070F446" Association="Self.FK__CineplexM__Cinep__5070F446">
+    <AssociationSet Name="FK__CineplexM__Cinep__1ED998B2" Association="Self.FK__CineplexM__Cinep__1ED998B2">
       <End Role="Cineplex" EntitySet="Cineplex" />
       <End Role="CineplexMovie" EntitySet="CineplexMovie" />
     </AssociationSet>
-    <AssociationSet Name="FK__CineplexM__Movie__5165187F" Association="Self.FK__CineplexM__Movie__5165187F">
+    <AssociationSet Name="FK__CineplexM__Movie__1FCDBCEB" Association="Self.FK__CineplexM__Movie__1FCDBCEB">
       <End Role="Movies" EntitySet="Movies" />
       <End Role="CineplexMovie" EntitySet="CineplexMovie" />
     </AssociationSet>
-    <AssociationSet Name="FK__Sessions__Movie___571DF1D5" Association="Self.FK__Sessions__Movie___571DF1D5">
+    <AssociationSet Name="FK__Sessions__Movie___20C1E124" Association="Self.FK__Sessions__Movie___20C1E124">
       <End Role="Movies" EntitySet="Movies" />
       <End Role="Sessions" EntitySet="Sessions" />
     </AssociationSet>

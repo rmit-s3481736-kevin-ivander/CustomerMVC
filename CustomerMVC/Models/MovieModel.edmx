@@ -4,7 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Assignment2DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Booking_ID" />
+          </Key>
+          <Property Name="Booking_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Movie_Title" Type="nvarchar(max)" />
+          <Property Name="Movie_Time" Type="char" MaxLength="10" />
+          <Property Name="Session_Time" Type="nchar" MaxLength="10" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Ticket" Type="int" />
+          <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Poster" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Cineplex">
           <Key>
             <PropertyRef Name="CineplexID" />
@@ -54,6 +69,17 @@
           <Property Name="Rating" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="CardNo" />
+          </Key>
+          <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CardNo" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="CCV" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="CardType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExpiredDate" Type="date" />
+        </EntityType>
         <EntityType Name="Sessions">
           <Key>
             <PropertyRef Name="Session_ID" />
@@ -66,7 +92,7 @@
           <Property Name="Session_Time" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="Session_Day" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CineplexM__Cinep__5070F446">
+        <Association Name="FK__CineplexM__Cinep__1ED998B2">
           <End Role="Cineplex" Type="Self.Cineplex" Multiplicity="1" />
           <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
           <ReferentialConstraint>
@@ -78,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CineplexM__Movie__5165187F">
+        <Association Name="FK__CineplexM__Movie__1FCDBCEB">
           <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
           <End Role="CineplexMovie" Type="Self.CineplexMovie" Multiplicity="*" />
           <ReferentialConstraint>
@@ -90,7 +116,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sessions__Movie___571DF1D5">
+        <Association Name="FK__Sessions__Movie___20C1E124">
           <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
           <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -103,21 +129,23 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Assignment2DataModelStoreContainer">
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cineplex" EntityType="Self.Cineplex" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CineplexMovie" EntityType="Self.CineplexMovie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieComingSoon" EntityType="Self.MovieComingSoon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CineplexM__Cinep__5070F446" Association="Self.FK__CineplexM__Cinep__5070F446">
+          <AssociationSet Name="FK__CineplexM__Cinep__1ED998B2" Association="Self.FK__CineplexM__Cinep__1ED998B2">
             <End Role="Cineplex" EntitySet="Cineplex" />
             <End Role="CineplexMovie" EntitySet="CineplexMovie" />
           </AssociationSet>
-          <AssociationSet Name="FK__CineplexM__Movie__5165187F" Association="Self.FK__CineplexM__Movie__5165187F">
+          <AssociationSet Name="FK__CineplexM__Movie__1FCDBCEB" Association="Self.FK__CineplexM__Movie__1FCDBCEB">
             <End Role="Movies" EntitySet="Movies" />
             <End Role="CineplexMovie" EntitySet="CineplexMovie" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sessions__Movie___571DF1D5" Association="Self.FK__Sessions__Movie___571DF1D5">
+          <AssociationSet Name="FK__Sessions__Movie___20C1E124" Association="Self.FK__Sessions__Movie___20C1E124">
             <End Role="Movies" EntitySet="Movies" />
             <End Role="Sessions" EntitySet="Sessions" />
           </AssociationSet>
@@ -174,6 +202,8 @@
             <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
           <EntitySet Name="MovieComingSoons" EntityType="Assignment2DataModel.MovieComingSoon" />
+          <EntitySet Name="Bookings" EntityType="Assignment2DataModel.Booking" />
+          <EntitySet Name="Payments" EntityType="Assignment2DataModel.Payment" />
         </EntityContainer>
         <Association Name="CineplexMovie1">
           <End Type="Assignment2DataModel.Cineplex" Role="Cineplex" Multiplicity="*" />
@@ -213,6 +243,32 @@
           <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Booking_ID" />
+          </Key>
+          <Property Name="Booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Movie_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Movie_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Session_Time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Ticket" Type="Int32" />
+          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Poster" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="CardNo" />
+          </Key>
+          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CardNo" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="CCV" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExpiredDate" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -283,6 +339,34 @@
                 <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="MovieComingSoonID" ColumnName="MovieComingSoonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="Assignment2DataModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Poster" ColumnName="Poster" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Ticket" ColumnName="Ticket" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Session_Time" ColumnName="Session_Time" />
+                <ScalarProperty Name="Movie_Time" ColumnName="Movie_Time" />
+                <ScalarProperty Name="Movie_Title" ColumnName="Movie_Title" />
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="Assignment2DataModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="CCV" ColumnName="CCV" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

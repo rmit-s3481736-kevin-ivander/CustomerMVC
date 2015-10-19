@@ -30,5 +30,7 @@ namespace CustomerMVC.Models
         public virtual DbSet<Movies> Movies1 { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
         public virtual DbSet<MovieComingSoon> MovieComingSoons { get; set; }
+        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
     }
 }

@@ -167,3 +167,5 @@ C:\Users\Max\Documents\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.Core
 C:\Users\Max\Documents\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 C:\Users\Max\Documents\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\Max\Documents\CustomerMVC\CustomerMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\sisilia\Documents\GitHub\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.csprojResolveAssemblyReference.cache
+C:\Users\sisilia\Documents\GitHub\CustomerMVC\CustomerMVC\obj\Debug\CustomerMVC.dll
