@@ -9,7 +9,7 @@
 
 <div>
     <h4>@Html.DisplayFor(model => model.Location)</h4>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             Location
@@ -51,18 +51,18 @@
             <th>
                 Images
             </th>
-                        <th></th>
+            <th></th>
         </tr>
         <tr>
-            @foreach (var item in Model.Movies)
+            @foreach (var item in Model.Movies1)
             {
                 <td colspan="200">
                     <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="1" style="width:170px;height:230px;" /><br />
                     @Html.ActionLink(item.Movie_Title, "Details", new { id = item.Movie_ID })
                 </td>
-        }
+            }
         </tr>
-</table>
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CineplexID }) |
