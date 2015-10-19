@@ -1,7 +1,31 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    .gallery 
+    {
+        position: relative;
+    }
 
+    .gallery img 
+    {
+            position: absolute;
+            left: 0;
+            top: 0;
+    }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('.gallery img:gt(0)').hide();
+        setInterval(function ()
+        {
+            $('.gallery :first-child').fadeOut().next('img').fadeIn().end().appendTo('.gallery');
+        }
+        , 10000
+        );
+    });
+</script>
 <div class="jumbotron">
     <h1>ABC Cineplex</h1>
     <p class="lead">Special Corporate Events</p>
@@ -9,6 +33,11 @@
 </div>
 
 <div class="row">
+    <div class="gallery">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Paranormal_Activity_The_ghost_dimension_Poster.jpg/220px-Paranormal_Activity_The_ghost_dimension_Poster.jpg" alt="newrelease" style="width:250px;height:350px;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Everest_poster.jpg/220px-Everest_poster.jpg" alt="newrelease" style="width:250px;height:350px;">
+
+    </div>
     <div class="col-md-4">
         <h2>Now Playing</h2>
         <p>
