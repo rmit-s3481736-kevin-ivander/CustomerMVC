@@ -52,7 +52,7 @@ namespace CustomerMVC.Controllers
             {
                 db.Enquiries.Add(enquiry);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(enquiry);

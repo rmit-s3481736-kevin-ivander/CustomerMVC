@@ -14,6 +14,8 @@
     <div class="form-horizontal">
         <h4>Enquiry</h4>
         <hr />
+        Please nter your details to get information for our events.
+        <br />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
@@ -34,14 +36,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <p class="btn btn-default">@Html.ActionLink("Back ", "Index", "Home")</p>
 </div>
 
 @section Scripts {

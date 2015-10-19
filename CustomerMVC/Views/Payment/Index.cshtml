@@ -5,6 +5,9 @@
 }
 
 <h2>Payment</h2>
+<br />
+<div>Payment Success.</div>
+<br />
 
 <table class="table">
     <tr>
@@ -31,12 +34,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.CardNo)
         </td>
-        <td>
-            <div>Payment Success.</div>
-            <br />
-            <p class="btn btn-default">@Html.ActionLink("OK", "Index","Home")</p>
-        </td>
     </tr>
 }
-
 </table>
+<p class="btn btn-default">@Html.ActionLink("OK", "Index", "Home")</p>
