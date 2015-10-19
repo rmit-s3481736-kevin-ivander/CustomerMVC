@@ -2,18 +2,45 @@
     ViewBag.Title = "Home Page";
 }
 <style>
-    #mvOne, #mvTwo {
+    #mvOneNP, #mvTwoNP, #mvThreeNP, #mvFourNP {
         cursor: pointer;
+        display: none;
+    }
+
+    #mvOneCS, #mvTwoCS, #mvThreeCS, #mvFourCS {
+        display: none;
+    }
+
+    #mvMovieNP {
+        width: 260px;
+        height: 360px;
+        background-color: black;
+        border-style: outset;
+        border-color: gold;
+        border-width: 5px;
+    }
+
+    #mvMovieCS {
+        width: 260px;
+        height: 360px;
+        background-color: black;
+        border-style: outset;
+        border-color: grey;
+        border-width: 5px;
     }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
-    $(function () {
-        var poster = ['#mvOne', '#mvTwo'],
-             index = 0;
-
-        (function nextPoster() {
-            $(poster[index++] || poster[index = 0, index++]).hide().delay(500).fadeIn(1000).delay(1000).fadeOut(500, nextPoster);
+    $(function mvGallery() {
+        var mvPosterNP = ["#mvOneNP", "#mvTwoNP", "#mvThreeNP", "#mvFourNP"],
+            i = 0;
+        (function npNxt() {
+            $(mvPosterNP[i++] || mvPosterNP[i = 0, i++]).hide().fadeIn(350).delay(7500).fadeOut(350, npNxt);
+        })();
+        var mvPosterCS = ["#mvOneCS", "#mvTwoCS", "#mvThreeCS", "#mvFourCS"],
+            j = 0;
+        (function csNxt() {
+            $(mvPosterCS[j++] || mvPosterCS[j = 0, j++]).hide().fadeIn(350).delay(12500).fadeOut(350, csNxt);
         })();
     });
 </script>
@@ -27,14 +54,26 @@
 <div class="row">
     <div class="col-md-4">
         <h2>Now Playing</h2>
-        <div id="mvOne"><a href="https://www.google.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Paranormal_Activity_The_ghost_dimension_Poster.jpg/220px-Paranormal_Activity_The_ghost_dimension_Poster.jpg" alt="newrelease" style="width:250px;height:350px;"></a></div>
-        <div id="mvTwo"><a href="http://jsfiddle.net/cwolves/UBpqT/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Everest_poster.jpg/220px-Everest_poster.jpg" alt="newrelease" style="width:250px;height:350px;"></a></div>
+        <div id="mvMovieNP">
+            <div id="mvOneNP"><a href="http://localhost:2019/Movie/Details/1"><img src="https://upload.wikimedia.org/wikipedia/en/2/28/Everest_poster.jpg" alt="newrelease" style="width:250px;height:350px;"></a></div>
+            <div id="mvTwoNP"><a href="http://localhost:2019/Movie/Details/2"><img src="https://upload.wikimedia.org/wikipedia/en/5/57/The_Walk_%282015_film%29_poster.jpg" alt="newrelease" style="width:250px;height:350px;"></a></div>
+            <div id="mvThreeNP"><a href="http://localhost:2019/Movie/Details/3"><img src="https://upload.wikimedia.org/wikipedia/en/a/ad/Crimson_Peak_theatrical_poster.jpg" alt="newrelease" style="width:250px;height:350px;"></a></div>
+            <div id="mvFourNP"><a href="http://localhost:2019/Movie/Details/4"><img src="https://upload.wikimedia.org/wikipedia/en/c/c0/Black_Mass_%28film%29_poster.jpg" alt="newrelease" style="width:250px;height:350px;"></a></div>
+        </div>
+        <p></p>
         <p class="btn btn-default">@Html.ActionLink("See Movies", "Index", "Movie")</p>
     </div>
     <div class="col-md-4">
         <h2>Coming Soon</h2>
-        <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Paranormal_Activity_The_ghost_dimension_Poster.jpg/220px-Paranormal_Activity_The_ghost_dimension_Poster.jpg" alt="newrelease" style="width:250px;height:350px;"></p>
-        <p><a class="btn btn-default">@Html.ActionLink("Coming Soon Movies", "Index", "ComingSoonMovie")</a></p>
+        <div id="mvMovieCS">
+            <div id="mvOneCS"><img src="https://upload.wikimedia.org/wikipedia/en/2/21/Burnt_Poster_Updated.jpg" alt="newrelease" style="width:250px;height:350px;"></div>
+            <div id="mvTwoCS"><img src="https://upload.wikimedia.org/wikipedia/en/8/8f/The_Last_Witch_Hunter_poster.jpg" alt="newrelease" style="width:250px;height:350px;"></div>
+            <div id="mvThreeCS"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Paranormal_Activity_The_ghost_dimension_Poster.jpg" alt="newrelease" style="width:250px;height:350px;"></div>
+            <div id="mvFourCS"><img src="http://t1.gstatic.com/images?q=tbn:ANd9GcQD8GqQY23eo1dTlHCnQa3v0hUgIiJ5yHpWBJ1S19ji-WOVG_TE" alt="newrelease" style="width:250px;height:350px;"></div>
+        </div>
+        <p></p>
+        <p class="btn btn-default">@Html.ActionLink("Coming Soon Movies", "Index", "ComingSoonMovie")</p>
+
     </div>
     <div class="col-md-4">
         <h2>Get Connected!</h2>
