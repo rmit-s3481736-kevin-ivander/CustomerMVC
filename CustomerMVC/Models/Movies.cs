@@ -19,7 +19,6 @@ namespace CustomerMVC.Models
         {
             this.Cineplexes1 = new HashSet<Cineplex>();
             this.Sessions = new HashSet<Session>();
-            this.Bookings = new HashSet<Booking>();
         }
     
         public int Movie_ID { get; set; }
@@ -35,7 +34,5 @@ namespace CustomerMVC.Models
         public virtual ICollection<Cineplex> Cineplexes1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Session> Sessions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }
