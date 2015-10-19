@@ -20,6 +20,7 @@ namespace CustomerMVC.Models
          [Required]
         public string Last_Name { get; set; }
          [Required]
+         [RegularExpression(@"^4[0-9]{12}(?:[0-9]{3})?$")]
         public string CardNo { get; set; }
          [Required]
          [StringLength(3)]
