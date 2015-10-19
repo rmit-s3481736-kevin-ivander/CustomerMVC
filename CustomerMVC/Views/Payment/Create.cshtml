@@ -35,8 +35,24 @@
         <div class="form-group">
             Card Number
             <div class="col-md-10">
+                @Html.EditorFor(model => model.CardType)
+                @Html.ValidationMessageFor(model => model.CardType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            Card Number
+            <div class="col-md-10">
                 @Html.EditorFor(model => model.CardNo)
                 @Html.ValidationMessageFor(model => model.CardNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            Card Number
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpiredDate)
+                @Html.ValidationMessageFor(model => model.ExpiredDate)
             </div>
         </div>
 
