@@ -35,8 +35,8 @@
         <div class="form-group">
             Card Type
             <div class="col-md-10">
-                @Html.RadioButtonFor(model => model.CardType, "VISA")
-                @Html.RadioButtonFor(model => model.CardType, "Master Card")
+                VISA - @Html.RadioButtonFor(model => model.CardType, "VISA")<br />
+                Master Card - @Html.RadioButtonFor(model => model.CardType, "Master Card")
                 @Html.ValidationMessageFor(model => model.CardType)
             </div>
         </div>
